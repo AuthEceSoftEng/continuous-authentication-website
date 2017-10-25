@@ -1,0 +1,23 @@
+<div align="center" class="container">
+
+    <h3>Third Use Case Scenario: Writing paragraphs</h3>
+
+    <div class="info">
+        The present and last use case scenario is also very simple: Pure writing of a given text.
+        <br> We present you this case scenario in order to get as much as keystroke data we can from your patterns and timings in order to create a keystroke profile that matches as much as possible your real one.
+        <br>
+        <br> You are given three paragraphs, containing random sentences from random texts and the only thing you have to do is type the text you see to the textarea below.
+        <br> Of course you don't have to type all the text you see, but the more text you type, the higher the probability of the system of kicking a hacker out of your profile. &#9786;
+    </div>
+    <br>
+
+    <div class="content">
+        {{myLoremIpsumParagraph}}
+        <textarea cols="57" rows="8" placeholder="Type text here...." id="textArea" [(ngModel)]="textAreaLorem"></textarea>
+        <div align="center"><button class="buttonDone" (click)="textAreaDone()">Done!</button></div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+</div>

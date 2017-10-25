@@ -1,0 +1,46 @@
+h3 {
+    text-decoration: underline;
+}
+
+.info {
+    font-size: large;
+    text-align: justify;
+    width: 60%;
+    height: auto;
+}
+
+.content {
+    background-color: #eee;
+    margin: auto;
+    width: 650px;
+    text-align: justify;
+    font-size: large;
+    white-space: pre-line;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.buttonDone {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 9px #999;
+}
+
+.buttonDone:hover {
+    background-color: #3e8e41
+}
+
+.buttonDone:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
