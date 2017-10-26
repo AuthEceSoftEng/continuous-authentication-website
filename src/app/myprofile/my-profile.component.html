@@ -36,31 +36,41 @@
                             <label>Total Keystrokes:</label> {{keystrokeProfile.total_keystrokes}}
                         </li>
                         <li class="list-group-item">
-                            <label>Minimum:</label> {{keystrokeProfile.min}}
+                            <label>Minimum:</label> {{keystrokeProfile.min}} ms
                         </li>
                         <li class="list-group-item">
-                            <label>Maximum:</label> {{keystrokeProfile.max}}
+                            <label>Maximum:</label> {{keystrokeProfile.max}} ms
                         </li>
                         <li class="list-group-item">
-                            <label>Average:</label> {{keystrokeProfile.avg}}
+                            <label>Average:</label> {{keystrokeProfile.avg}} ms
                         </li>
                         <li class="list-group-item">
-                            <label>Standard Deviation:</label> {{keystrokeProfile.std}}
+                            <label>Standard Deviation:</label> {{keystrokeProfile.std}} ms
                         </li>
                         <li class="list-group-item">
-                            <label>Fastest <a href="https://en.wikipedia.org/wiki/Digraphs_and_trigraphs">Digraph:</a></label> {{keystrokeProfile.fastest_digraph}}
+                            <label>Fastest
+                                <a href="https://en.wikipedia.org/wiki/Digraphs_and_trigraphs">Digraph:</a>
+                            </label> {{keystrokeProfile.fastest_digraph}}
                         </li>
                         <li class="list-group-item">
                             <label>Slowest Digraph:</label> {{keystrokeProfile.slowest_digraph}}
                         </li>
                     </ul>
-                    <small style="font-style:italic;" *ngIf="keystrokeProfile_loadedFlag">(Timings in milliseconds)</small>
+                    <p align="right">
+                        <small style="font-style:italic;">('
+                            <span style="font-weight: bold;">#</span>' represents any number on the keyboard.)
+                        </small>
+                    </p>
                 </div>
 
-                <div *ngIf="loadingProfile" align="center"><img src="assets/img/misc/loading.gif" style="width:60px;height:60px;"></div>
+                <div *ngIf="loadingProfile" align="center">
+                    <img src="assets/img/misc/loading.gif" style="width:60px;height:60px;">
+                </div>
 
                 <div *ngIf="!loadingProfile && !dataAvailable">
-                    <p><strong>You do not have any keystroke data yet!</strong></p>
+                    <p>
+                        <strong>You do not have any keystroke data yet!</strong>
+                    </p>
                 </div>
 
 
