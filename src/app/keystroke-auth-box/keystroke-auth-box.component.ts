@@ -38,7 +38,7 @@ export class KeystrokeAuthBoxComponent implements OnInit {
 
   /* ngmodels from component to template*/
   instructions_msg: string;
-  err_msg =  '';
+  err_msg = '';
   myRandomQuote: string;
   myRandomQuoteLoading = false;
   questionArr = [];
@@ -54,18 +54,18 @@ export class KeystrokeAuthBoxComponent implements OnInit {
   /* Static Questions */
   questions =
   [
-  'What\'s your name?',
-  'What\'s your favorite color?',
-  'What\'s the name of your best friend?',
-  'What\'s the name of your mother?',
-  'What\'s your favorite soccer team?',
-  'What\'s your occupation?',
-  'What\'s your pet name?',
-  'What\'s your city?',
-  'What\'s your country?',
-  'What\'s the name of your university/school?',
-  'What\'s your favorite movie?',
-  'What\'s your favorite actor?'
+    'What\'s your name?',
+    'What\'s your favorite color?',
+    'What\'s the name of your best friend?',
+    'What\'s the name of your mother?',
+    'What\'s your favorite soccer team?',
+    'What\'s your occupation?',
+    'What\'s your pet name?',
+    'What\'s your city?',
+    'What\'s your country?',
+    'What\'s the name of your university/school?',
+    'What\'s your favorite movie?',
+    'What\'s your favorite actor?'
   ];
 
   /************************************************************************************************************************ */
@@ -73,15 +73,15 @@ export class KeystrokeAuthBoxComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    console.log('Starting Component with type=' + this.type + ' and mSize = ' + String(this.mSize) );
+    console.log('Starting Component with type=' + this.type + ' and mSize = ' + String(this.mSize));
 
     /* Determine Type */
     if (this.type === 'text') {
       this.buildText();
-    }else if (this.type === 'question') {
+    } else if (this.type === 'question') {
       this.buildQuestion();
-    }else if (this.type === 'random') {
-      if ( this.getRandomInt(0, 1 ) === 0 ) {this.type = 'text'; this.buildText(); } else {this.type = 'question'; this.buildQuestion(); }
+    } else if (this.type === 'random') {
+      if (this.getRandomInt(0, 1) === 0) { this.type = 'text'; this.buildText(); } else { this.type = 'question'; this.buildQuestion(); }
     }
 
   }
@@ -93,7 +93,7 @@ export class KeystrokeAuthBoxComponent implements OnInit {
     this.myRandomQuoteLoading = true;
     if (this.mSize !== undefined) {
       this.mSize = Number(this.mSize);
-    }else {
+    } else {
       this.mSize = this.getRandomInt(this.MSIZE_MIN_TEXT, this.MSIZE_MAX_TEXT);
     }
     this.instructions_msg = 'Please type the text below.';
@@ -106,7 +106,7 @@ export class KeystrokeAuthBoxComponent implements OnInit {
   buildQuestion() {
     if (this.mSize !== undefined) {
       this.mSize = Number(this.mSize);
-    }else {
+    } else {
       this.mSize = this.getRandomInt(this.MSIZE_MIN_QUESTION, this.MSIZE_MAX_QUESTION);
     }
     this.instructions_msg = 'Please answer the question(s) below';
@@ -117,33 +117,33 @@ export class KeystrokeAuthBoxComponent implements OnInit {
   * @param {maxStrSize}: Number indicating the maximum of characters to be delivered to html.
   */
   getRandomQuoteWrapper(maxStrSize) {
-      /* Get a random paragraph. */
-      const randomParagraphs = new RandomParagraphs();
-      const tmpArr = randomParagraphs.paragraphs_noBreak[this.getRandomInt(0, randomParagraphs.paragraphs.length - 1)];
-      /* Get a random sentence within this paragraph */
-      let rSplit = tmpArr.split(' ');
-      rSplit = rSplit.slice(this.getRandomInt(0, rSplit.length - 5), rSplit.length - 1); // max 5 words from the end
-      this.myRandomQuote = '';
-      for (let i = 0; i < rSplit.length; i++) {
-        this.myRandomQuote += rSplit[i] + ' ';
-      }
+    /* Get a random paragraph. */
+    const randomParagraphs = new RandomParagraphs();
+    const tmpArr = randomParagraphs.paragraphs_noBreak[this.getRandomInt(0, randomParagraphs.paragraphs.length - 1)];
+    /* Get a random sentence within this paragraph */
+    let rSplit = tmpArr.split(' ');
+    rSplit = rSplit.slice(this.getRandomInt(0, rSplit.length - 5), rSplit.length - 1); // max 5 words from the end
+    this.myRandomQuote = '';
+    for (let i = 0; i < rSplit.length; i++) {
+      this.myRandomQuote += rSplit[i] + ' ';
+    }
 
-      this.myRandomQuote = this.myRandomQuote.trim();
-      /* Restrict size without cutting the last word*/
-      if (this.myRandomQuote.length > maxStrSize) {
-        const myRandomQuote  = this.myRandomQuote;
-        if (myRandomQuote[ maxStrSize ] !== ' ') {
-          const offset = myRandomQuote.substring(maxStrSize).indexOf(' ');
-          if (offset > -1) {
-            maxStrSize += offset;
-            }else {
-            maxStrSize = this.myRandomQuote.length;
-            }
+    this.myRandomQuote = this.myRandomQuote.trim();
+    /* Restrict size without cutting the last word*/
+    if (this.myRandomQuote.length > maxStrSize) {
+      const myRandomQuote = this.myRandomQuote;
+      if (myRandomQuote[maxStrSize] !== ' ') {
+        const offset = myRandomQuote.substring(maxStrSize).indexOf(' ');
+        if (offset > -1) {
+          maxStrSize += offset;
+        } else {
+          maxStrSize = this.myRandomQuote.length;
         }
-        this.myRandomQuote = this.myRandomQuote.substr(0, maxStrSize);
-
       }
-      this.myRandomQuoteLoading = false;
+      this.myRandomQuote = this.myRandomQuote.substr(0, maxStrSize);
+
+    }
+    this.myRandomQuoteLoading = false;
   }
 
   /** Fills Questions
@@ -155,11 +155,11 @@ export class KeystrokeAuthBoxComponent implements OnInit {
     const tempQuestions = this.questions;
     /* Start picking random questions, excluding those that already have been picked */
     for (let i = 0; i < len; i++) {
-        const randomIndex =  Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
-        this.questionArr.push(this.questions[randomIndex]);
-        this.answerInputArr.push('');
-        tempQuestions.splice(randomIndex, 1);
-        maximum -= 1;
+      const randomIndex = Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
+      this.questionArr.push(this.questions[randomIndex]);
+      this.answerInputArr.push('');
+      tempQuestions.splice(randomIndex, 1);
+      maximum -= 1;
     }
   }
 
@@ -172,32 +172,32 @@ export class KeystrokeAuthBoxComponent implements OnInit {
         // console.log('User text input is null')
         this.showErrMsgForTime(this.ERR_MSG_TEXT_EMPTY, 1000);
         return false;
-      }else {
+      } else {
         // console.log('true');
-        if ( this.computeStrDifference(this.textInput.trim(), this.myRandomQuote) > this.TEXT_MAX_ERR_THRESH
-           || Math.abs(this.textInput.trim().length - this.myRandomQuote.trim().length ) > this.TEXT_MAX_LENGTH_DIFF ) {
+        if (this.computeStrDifference(this.textInput.trim(), this.myRandomQuote) > this.TEXT_MAX_ERR_THRESH
+          || Math.abs(this.textInput.trim().length - this.myRandomQuote.trim().length) > this.TEXT_MAX_LENGTH_DIFF) {
           this.showErrMsgForTime(this.ERR_MSG_TEXT, 1000);
           return false;
-        }else {
+        } else {
           return true;
         }
       }
-    }else if (this.type === 'question') {
-	  let totalLength = 0;
+    } else if (this.type === 'question') {
+      let totalLength = 0;
       for (let i = 0; i < this.answerInputArr.length; i++) {
         if (this.answerInputArr[i].trim() === '') {
           this.showErrMsgForTime(this.ERR_MSG_QUESTION, 1000);
           return false;
-        }else{
-			totalLength += this.answerInputArr[i].length;
-	    }
+        } else {
+          totalLength += this.answerInputArr[i].length;
+        }
       }
-      if (totalLength <= 6){
-		  this.showErrMsgForTime(this.ERR_MSG_QUESTION_INSUFFICIENT, 1500);
-		  return false;
-	  }else{
-		  return true;
-	  }
+      if (totalLength <= 6) {
+        this.showErrMsgForTime(this.ERR_MSG_QUESTION_INSUFFICIENT, 1500);
+        return false;
+      } else {
+        return true;
+      }
 
     }
   }
@@ -207,7 +207,7 @@ export class KeystrokeAuthBoxComponent implements OnInit {
    * Returns a random integer between the specified range
    */
   getRandomInt(minimum, maximum) {
-     return Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
+    return Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
   }
 
   /**
@@ -217,9 +217,9 @@ export class KeystrokeAuthBoxComponent implements OnInit {
   stripNonLettersAndNonNumbersFromString(str) {
     let ret = '';
     for (let i = 0; i < str.length; i++) {
-        if ((str[i].toLowerCase() >= 'a' && str[i].toLowerCase() <= 'z') || (str[i] >= '0' && str[i] <= '9') || str[i] === ' ') {
-            ret += str[i];
-        }
+      if ((str[i].toLowerCase() >= 'a' && str[i].toLowerCase() <= 'z') || (str[i] >= '0' && str[i] <= '9') || str[i] === ' ') {
+        ret += str[i];
+      }
     }
     return ret;
   }
@@ -230,7 +230,7 @@ export class KeystrokeAuthBoxComponent implements OnInit {
   computeStrDifference(str1, str2) {
     let diff = 0;
     for (let i = 0; i < str1.length; i++) {
-      if (i > str2.length - 1) { break;}
+      if (i > str2.length - 1) { break; }
       if (str1[i].toLowerCase() !== str2[i].toLowerCase()) {
         diff++;
       }
@@ -245,7 +245,7 @@ export class KeystrokeAuthBoxComponent implements OnInit {
   showErrMsgForTime(errmsg, time) {
     this.err_msg = errmsg;
     const that = this;
-    setTimeout(function(){
+    setTimeout(function () {
       that.err_msg = '';
     }, time);
   }
