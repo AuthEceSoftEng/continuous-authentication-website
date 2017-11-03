@@ -19,12 +19,12 @@
         "styles": [
             "styles.css"
         ],
-        "scripts": [],
+        "scripts": ["../node_modules/js-levenshtein/index.js"],
         "environmentSource": "environments/environment.ts",
-"environments": {
-  "dev": "environments/environment.ts",
-  "prod": "environments/environment.prod.ts"
-}
+        "environments": {
+            "dev": "environments/environment.ts",
+            "prod": "environments/environment.prod.ts"
+        }
 
     }],
     "e2e": {

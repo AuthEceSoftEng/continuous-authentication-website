@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { UserService } from '../_services/user.service';
 import { RandomParagraphs } from '../_models/random-paragraphs';
+declare var levenshtein: any;
 
 @Component({
   selector: 'app-keystroke-auth-box',
@@ -29,7 +30,6 @@ export class KeystrokeAuthBoxComponent implements OnInit {
   MSIZE_MIN_QUESTION = 1;
   MSIZE_MAX_QUESTION = 2;
   TEXT_MAX_ERR_THRESH = 5;
-  TEXT_MAX_LENGTH_DIFF = 8;
   ERR_MSG_TEXT = 'Text differs a lot. Check again!';
   ERR_MSG_TEXT_EMPTY = 'Missing text input!';
   ERR_MSG_QUESTION = 'Missing Input. Check Again!';
@@ -74,7 +74,6 @@ export class KeystrokeAuthBoxComponent implements OnInit {
 
   ngOnInit() {
     console.log('Starting Component with type=' + this.type + ' and mSize = ' + String(this.mSize));
-
     /* Determine Type */
     if (this.type === 'text') {
       this.buildText();
@@ -140,7 +139,7 @@ export class KeystrokeAuthBoxComponent implements OnInit {
           maxStrSize = this.myRandomQuote.length;
         }
       }
-      this.myRandomQuote = this.myRandomQuote.substr(0, maxStrSize);
+      this.myRandomQuote = this.myRandomQuote.substr(0, maxStrSize).trim();
 
     }
     this.myRandomQuoteLoading = false;
@@ -174,8 +173,7 @@ export class KeystrokeAuthBoxComponent implements OnInit {
         return false;
       } else {
         // console.log('true');
-        if (this.computeStrDifference(this.textInput.trim(), this.myRandomQuote) > this.TEXT_MAX_ERR_THRESH
-          || Math.abs(this.textInput.trim().length - this.myRandomQuote.trim().length) > this.TEXT_MAX_LENGTH_DIFF) {
+        if (this.minimumEditDistance(this.textInput.trim(), this.myRandomQuote) > this.TEXT_MAX_ERR_THRESH) {
           this.showErrMsgForTime(this.ERR_MSG_TEXT, 1000);
           return false;
         } else {
@@ -227,15 +225,8 @@ export class KeystrokeAuthBoxComponent implements OnInit {
   /**
    * Computes how different two strings are
    */
-  computeStrDifference(str1, str2) {
-    let diff = 0;
-    for (let i = 0; i < str1.length; i++) {
-      if (i > str2.length - 1) { break; }
-      if (str1[i].toLowerCase() !== str2[i].toLowerCase()) {
-        diff++;
-      }
-    }
-    return diff;
+  minimumEditDistance(str1, str2) {
+    return levenshtein(str1, str2);
   }
 
   /**
