@@ -8,10 +8,10 @@
 
     <!-- If type is text -->
     <div *ngIf="type == 'text'" class="text-wrapper">
-        <div class="text">{{myRandomQuote}}<img *ngIf="myRandomQuoteLoading" src="../../assets/img/misc/loading2.gif" width="20" height="20"/></div>
+        <div class="text">{{myRandomQuote}}<img *ngIf="myRandomQuoteLoading" src="../../assets/img/misc/loading2.gif" width="20" height="20" /></div>
         <br>
-        <textarea onpaste="return false" ondrop="return false" class="keystroke-auth-box-user-feedback" placeholder="Type text above..."
-            [(ngModel)]="textInput"></textarea>
+        <textarea onpaste="alert('Gotcha! ;)');return false" ondrop="alert('Gotcha! ;)');return false" class="keystroke-auth-box-user-feedback"
+            placeholder="Type text above..." [(ngModel)]="textInput"></textarea>
     </div>
 
 
@@ -24,8 +24,8 @@
                 </td>
                 <td>
                     <span class="answer">
-                        <input onpaste="return false" ondrop="return false" class="keystroke-auth-box-user-feedback" type="text" placeholder="Type your answer here..."
-                            [(ngModel)]="answerInputArr[i]">
+                        <input onpaste="alert('Gotcha! ;)');return false" ondrop="alert('Gotcha! ;)');return false" class="keystroke-auth-box-user-feedback"
+                            type="text" placeholder="Type your answer here..." [(ngModel)]="answerInputArr[i]">
                     </span>
                 </td>
             </tr>
