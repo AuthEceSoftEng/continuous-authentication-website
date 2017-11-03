@@ -73,7 +73,7 @@ export class KeystrokeAuthBoxComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    console.log('Starting Component with type=' + this.type + ' and mSize = ' + String(this.mSize));
+    // console.log('Starting Component with type=' + this.type + ' and mSize = ' + String(this.mSize));
     /* Determine Type */
     if (this.type === 'text') {
       this.buildText();
