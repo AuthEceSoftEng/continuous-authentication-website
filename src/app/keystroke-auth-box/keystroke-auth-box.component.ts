@@ -29,7 +29,7 @@ export class KeystrokeAuthBoxComponent implements OnInit {
   MSIZE_MAX_TEXT = 35;
   MSIZE_MIN_QUESTION = 1;
   MSIZE_MAX_QUESTION = 2;
-  TEXT_MAX_ERR_THRESH = 5;
+  TEXT_MAX_ERR_THRESH =  10000 //  5; TESTING PURPOSES
   ERR_MSG_TEXT = 'Text differs a lot. Check again!';
   ERR_MSG_TEXT_EMPTY = 'Missing text input!';
   ERR_MSG_QUESTION = 'Missing Input. Check Again!';
