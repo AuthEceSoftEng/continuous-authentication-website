@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService, AuthenticationService } from '../_services/index';
 
 
+
 @Component({
     moduleId: module.id,
     templateUrl: 'login.component.html',
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
         private router: Router,
         private authenticationService: AuthenticationService,
         private alertService: AlertService
-      ) { }
+    ) { }
 
     ngOnInit() {
 
@@ -39,16 +40,16 @@ export class LoginComponent implements OnInit {
             this.loading = true;
             this.authenticationService.login(this.model.username, this.model.password)
                 .subscribe(
-                    data => {
-                        if (data.success){
+                data => {
+                    if (data.success) {
                         // this._router.navigate(['Welcome']);
-                            this.router.navigate([this.returnUrl]);
-                        }else{
-                            this.alertService.error(data.message);
-                            this.loading = false;
-                        }
+                        this.router.navigate([this.returnUrl]);
+                    } else {
+                        this.alertService.error(data.message);
+                        this.loading = false;
+                    }
 
-                    });
+                });
         }
     }
 
