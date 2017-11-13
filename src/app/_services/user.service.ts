@@ -5,7 +5,7 @@ import { User } from '../_models/index';
 
 @Injectable()
 export class UserService {
-    CONT_AUTH_SERVER_URL_FOR_KEY_PROFILE = 'http://localhost:5000/misc/mykeyprofile'//'https://evening-dusk-17545.herokuapp.com/misc/mykeyprofile';
+    CONT_AUTH_SERVER_URL_FOR_KEY_PROFILE = 'https://evening-dusk-17545.herokuapp.com/misc/mykeyprofile';
     constructor(private http: Http) { }
 
     getAll() {
