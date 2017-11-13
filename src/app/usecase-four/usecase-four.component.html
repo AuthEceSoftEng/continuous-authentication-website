@@ -7,9 +7,8 @@
 </div>
 
 
-<div class="container">
 
-    <!-- <div class="row">
+<!-- <div class="row">
         <div class="col-lg-8">
             <p style="font-size:large;"> <br> The present and last use case scenario is very simple: Pure writing of a given text.
                 <br> We present you this case scenario in order to get as much as keystroke data we can from your patterns and timings in order to create a keystroke profile that matches as much as possible your real one.
@@ -21,16 +20,19 @@
             <img src="././assets/img/ucasethree/usecasethree.png" style="width:50%;height:auto;">
         </div>
     </div> -->
-    <div class="panel panel-primary">
-        <div class="panel-body">
-            <p class="random-paragraph">{{myRandomParagraph}}</p>
-        </div>
-        <textarea class="form-control user-input" onpaste="return false" ondrop="return false;" cols="20" rows="6" placeholder="Type the text above here..." id="textArea" [(ngModel)]="textAreaRandomParagraph"></textarea>
+<div class="panel panel-primary">
+    <div class="panel-body">
+        <p class="random-paragraph">{{myRandomParagraph}}</p>
     </div>
-    <div align="center"><button class="btn btn-primary btn-lg" (click)="textAreaDone()">Done!</button></div>
-
-
+    <textarea class="form-control user-input" onpaste="return false" ondrop="return false;" cols="20" rows="12" placeholder="Type the text above here..."
+        id="textArea" [(ngModel)]="textAreaRandomParagraph"></textarea>
 </div>
+<div align="center">
+    <button class="btn btn-primary btn-lg" (click)="textAreaDone()">Done!</button>
+</div>
+
+
+
 
 
 

@@ -5,6 +5,7 @@ import { User } from '../_models/index';
 
 @Injectable()
 export class UserService {
+    CONT_AUTH_SERVER_URL_FOR_KEY_PROFILE = 'http://localhost:5000/misc/mykeyprofile'//'https://evening-dusk-17545.herokuapp.com/misc/mykeyprofile';
     constructor(private http: Http) { }
 
     getAll() {
@@ -32,7 +33,7 @@ export class UserService {
     getKeystrokeProfile(username: string) {
 
         // The url from the continuous authentication server
-        const contAuthServerUrl =  'https://evening-dusk-17545.herokuapp.com/misc/mykeyprofile';
+        const contAuthServerUrl = this.CONT_AUTH_SERVER_URL_FOR_KEY_PROFILE;
 
         // object of data body (track_code is loaded from the global variable of idndex.html)
         const myReqInfo = { track_code: window['track_code'], subject: username };
@@ -40,8 +41,8 @@ export class UserService {
         // Construct headers
         // This is a CORS request so adjust content-type
         let headers = new Headers();
-        headers.append( 'Content-Type', 'application/x-www-form-urlencoded');
-        headers.append( 'user-key-profile-request', JSON.stringify(myReqInfo));
+        headers.append('Content-Type', 'application/x-www-form-urlencoded');
+        headers.append('user-key-profile-request', JSON.stringify(myReqInfo));
 
         // Perfrom the request and map the response as json
         return this.http.get(contAuthServerUrl, new RequestOptions({ headers: headers })).map((response: Response) => response.json());
@@ -51,7 +52,7 @@ export class UserService {
     /* Get random quote */
     getRandomQuote() {
         // Append timestamp to url to amke it unique
-        const timestamp =  Date.now();
+        const timestamp = Date.now();
         const url =
             'https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&jsonp=mycallback/' + String(timestamp);
         const headers = new Headers();
@@ -71,7 +72,7 @@ export class UserService {
         let currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
         if (currentUser && currentUser.token) {
             let headers = new Headers();
-            headers.append('x-access-token', currentUser.token  );
+            headers.append('x-access-token', currentUser.token);
             return new RequestOptions({ headers: headers });
         }
     }

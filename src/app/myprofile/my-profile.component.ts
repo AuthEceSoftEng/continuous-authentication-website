@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from '@angular/router';
-import { User, Keystrokeprofile } from '../_models/index';
+import { User } from '../_models/index';
 import { UserService } from '../_services/index';
 import { AlertService } from '../_services/alert.service';
 
@@ -20,7 +20,7 @@ export class MyProfileComponent implements OnInit {
     userEditedFlag = false;
 
     // Keystroke Profile Class
-    keystrokeProfile = new Keystrokeprofile;
+    keystrokeProfileStatistics: any
     loadingProfile = true;
     dataAvailable = false;
 
@@ -87,11 +87,12 @@ export class MyProfileComponent implements OnInit {
             .subscribe(
             data => {
                 this.loadingProfile = false;
+                // console.log(data);
                 if (data.success) {
                     console.log('mpika sto data success');
-                    this.keystrokeProfile = data.keyprofile;
+                    this.keystrokeProfileStatistics = data.keyprofile.statistics;
                     console.log('Client: Keystroke Profile Loaded');
-                    console.log(this.keystrokeProfile);
+                    console.log(this.keystrokeProfileStatistics);
                     this.dataAvailable = true;
                 } else {
                     this.dataAvailable = false;

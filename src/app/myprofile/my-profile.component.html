@@ -33,32 +33,36 @@
                 <div *ngIf="!loadingProfile && dataAvailable">
                     <ul class="list-group" style="font-size:larger">
                         <li class="list-group-item">
-                            <label>Total Keystrokes:</label> {{keystrokeProfile.total_keystrokes}}
+                            <label>Total Keystrokes:</label> {{keystrokeProfileStatistics.total_keystrokes}}
                         </li>
                         <li class="list-group-item">
-                            <label>Minimum:</label> {{keystrokeProfile.min}} ms
+                            <label>Average
+                                <i>Key Hold</i> Time:</label> {{keystrokeProfileStatistics.key_hold_stat.mean | number:'1.2-2'}}
+                            &plusmn; {{keystrokeProfileStatistics.key_hold_stat.std | number:'1.2-2'}} ms
                         </li>
                         <li class="list-group-item">
-                            <label>Maximum:</label> {{keystrokeProfile.max}} ms
+                            <label>Average
+                                <i>Digraph Up-Down Flight</i> Time:</label> {{keystrokeProfileStatistics.digraph_up_down_stat.mean
+                            | number:'1.2-2'}} &plusmn; {{keystrokeProfileStatistics.digraph_up_down_stat.std | number:'1.2-2'}}
+                            ms
                         </li>
                         <li class="list-group-item">
-                            <label>Average:</label> {{keystrokeProfile.avg}} ms
+                            <label>Average
+                                <i>Digraph Down-Down Flight</i> Time:</label> {{keystrokeProfileStatistics.digraph_down_down_stat.mean
+                            | number:'1.2-2'}} &plusmn; {{keystrokeProfileStatistics.digraph_down_down_stat.std | number:'1.2-2'}}
+                            ms
                         </li>
                         <li class="list-group-item">
-                            <label>Standard Deviation:</label> {{keystrokeProfile.std}} ms
-                        </li>
-                        <li class="list-group-item">
-                            <label>Fastest
-                                <a href="https://en.wikipedia.org/wiki/Digraphs_and_trigraphs">Digraph:</a>
-                            </label> {{keystrokeProfile.fastest_digraph}}
-                        </li>
-                        <li class="list-group-item">
-                            <label>Slowest Digraph:</label> {{keystrokeProfile.slowest_digraph}}
+                            <label>Average
+                                <i>Digraph Up-Up Flight</i> Time:</label> {{keystrokeProfileStatistics.digraph_up_up_stat.mean
+                            | number:'1.2-2'}} &plusmn; {{keystrokeProfileStatistics.digraph_up_up_stat.std | number:'1.2-2'}}
+                            ms
                         </li>
                     </ul>
-                    <p align="right">
+                    <p align="left">
                         <small style="font-style:italic;">
-                            '<span style="font-weight: bold;">#</span>' represents any number on the keyboard.
+                            <span style="font-weight: bold;">Up-Down Times</span> can be negative if for a digraph, you press the second key before leaving
+                            the first.
                         </small>
                     </p>
                 </div>
