@@ -29,7 +29,7 @@ export class KeystrokeAuthBoxComponent implements OnInit {
   MSIZE_MAX_TEXT = 35;
   MSIZE_MIN_QUESTION = 1;
   MSIZE_MAX_QUESTION = 2;
-  TEXT_MAX_ERR_THRESH =  5; //  5; TESTING PURPOSES
+  TEXT_MAX_ERR_THRESH = 5; //  5; TESTING PURPOSES
   ERR_MSG_TEXT = 'Text differs a lot. Check again!';
   ERR_MSG_TEXT_EMPTY = 'Missing text input!';
   ERR_MSG_QUESTION = 'Missing Input. Check Again!';
@@ -53,20 +53,20 @@ export class KeystrokeAuthBoxComponent implements OnInit {
 
   /* Static Questions */
   questions =
-  [
-    'What\'s your name?',
-    'What\'s your favorite color?',
-    'What\'s the name of your best friend?',
-    'What\'s the name of your mother?',
-    'What\'s your favorite soccer team?',
-    'What\'s your occupation?',
-    'What\'s your pet name?',
-    'What\'s your city?',
-    'What\'s your country?',
-    'What\'s the name of your university/school?',
-    'What\'s your favorite movie?',
-    'What\'s your favorite actor?'
-  ];
+    [
+      'What\'s your name?',
+      'What\'s your favorite color?',
+      'What\'s the name of your best friend?',
+      'What\'s the name of your mother?',
+      'What\'s your favorite soccer team?',
+      'What\'s your occupation?',
+      'What\'s your pet name?',
+      'What\'s your city?',
+      'What\'s your country?',
+      'What\'s the name of your university/school?',
+      'What\'s your favorite movie?',
+      'What\'s your favorite actor?'
+    ];
 
   /************************************************************************************************************************ */
 
