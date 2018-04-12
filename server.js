@@ -1,6 +1,7 @@
 // BASE SETUP
 // ======================================
 // CALL THE PACKAGES
+require('dotenv').config();
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
@@ -21,7 +22,7 @@ app.use(bodyParser.json());
 
 
 // configure our app to handle CORS requests
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, \
@@ -52,7 +53,7 @@ app.use('/mylorem', myLoremRoutes);
 // MAIN CATCHALL ROUTE ---------------
 // SEND USERS TO FRONTEND ------------
 // has to be registered after API ROUTES
-app.get('*', function(req, res) {
+app.get('*', function (req, res) {
     //res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
     res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
@@ -62,6 +63,6 @@ app.get('*', function(req, res) {
 
 // START THE SERVER
 // ====================================
-http.listen(config.port, function() {
+http.listen(config.port, function () {
     console.log('listening on ' + config.port);
 });
